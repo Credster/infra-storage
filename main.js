@@ -1,4 +1,4 @@
-import { server } from './src/server.js'
+import { server } from "./src/server.js";
 
 const start = async () => {
   const appServer = await server();
@@ -9,6 +9,6 @@ const start = async () => {
     appServer.log.error(err);
     process.exit(1);
   }
-}
+};
 
 start();
