@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/credster/infra-storage#readme",
   "dependencies": {
+    "@fastify/autoload": "^5.6.0",
     "@fastify/env": "^4.2.0",
     "fastify": "^4.10.2",
     "fastify-plugin": "^4.4.0"
