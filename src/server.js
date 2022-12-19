@@ -8,7 +8,7 @@ import configPlugin from "./plugins/config.js";
 export async function server(options = { logger: { level: "trace" } }) {
   const fastify = Fastify(options);
 
-  fastify.register(configPlugin);
+  fastify.register(fp(configPlugin));
   fastify.register(fp(shutdownPlugin));
   fastify.register(fp(healthRoutes));
 
