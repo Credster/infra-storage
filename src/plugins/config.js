@@ -9,6 +9,10 @@ export default async function configPlugin(server, options, done) {
         type: "string",
         default: 3001,
       },
+      GCLOUD_SERVICE_ACCOUNT_JSON: {
+        type: "string",
+        default: "{}",
+      },
     },
   };
 
