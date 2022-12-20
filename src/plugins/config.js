@@ -13,6 +13,13 @@ export default async function configPlugin(server, options, done) {
         type: "string",
         default: "{}",
       },
+      GCLOUD_STORAGE_UPLOADS_BUCKET: {
+        type: "string",
+      },
+      GCLOUD_STORAGE_UPLOADS_PRESIGNED_TOKEN_EXPIRATION_MIN: {
+        type: "number",
+        default: 30,
+      },
     },
   };
 
