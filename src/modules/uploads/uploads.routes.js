@@ -32,11 +32,20 @@ export default async function routesUpload(server, options) {
   // and definitely not without a ratelimit
   // in place to avoid spamming the cloud storage
   // service APIs
+  /**
+   * This is based on Google Cloud Storage APIs
+   * and supporting documentation references here:
+   * 1. https://cloud.google.com/storage/docs/xml-api/post-object-forms#node.js
+   * 2. https://github.com/googleapis/nodejs-storage/blob/434cca4e12fca53e7db7ef3f5865aece94ae937c/samples/generateV4SignedPolicy.js
+   * 3.
+   */
   server.get("/form", async (request, reply) => {
     const bucketName = server.config.GCLOUD_STORAGE_UPLOADS_BUCKET;
     // @TODO use a fixed identifier for the user such as a
     // uuid+hash(useremail)+nameOfFileTarget, i.e:
     // 17172181791212-dvb8b8bv83b+certImage.jpg
+    // @TODO the file extension here should come from the file type
+    // as part of the request
     const fileName = "upload-file.jpg";
 
     const storageBucket = server.storage.bucket(bucketName);
@@ -71,6 +80,16 @@ export default async function routesUpload(server, options) {
     reply.send(output);
   });
 
+  /**
+   * This is based on PUT Object's presigned URL
+   * on Google Cloud Storage as documented here with the
+   * following supporting resources:
+   * 1. https://cloud.google.com/storage/docs/xml-api/put-object-upload
+   * 2. https://cloud.google.com/storage/docs/samples/storage-generate-signed-url-v4
+   * 3. https://cloud.google.com/storage/docs/samples/storage-generate-upload-signed-url-v4
+   * 4. https://cloud.google.com/blog/products/storage-data-transfer/uploading-images-directly-to-cloud-storage-by-using-signed-url
+   *
+   */
   server.post("/url_token", async (request, reply) => {
     const bucketName = server.config.GCLOUD_STORAGE_UPLOADS_BUCKET;
     // @TODO use a fixed identifier for the user such as a
