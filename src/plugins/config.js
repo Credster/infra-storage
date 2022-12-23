@@ -6,7 +6,7 @@ export default async function configPlugin(server, options, done) {
     required: ["PORT"],
     properties: {
       PORT: {
-        type: "string",
+        type: "number",
         default: 3001,
       },
       GCLOUD_SERVICE_ACCOUNT_JSON: {
