@@ -4,7 +4,7 @@ const start = async () => {
   const appServer = await server();
 
   try {
-    await appServer.listen({ port: appServer.config.PORT });
+    await appServer.listen({ port: appServer.config.HTTP_PORT });
   } catch (err) {
     appServer.log.error(err);
     process.exit(1);

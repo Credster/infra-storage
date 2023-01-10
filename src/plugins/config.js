@@ -4,13 +4,13 @@ export default async function configPlugin(server, options, done) {
   const schema = {
     type: "object",
     required: [
-      "PORT",
+      "HTTP_PORT",
       "GCLOUD_SERVICE_ACCOUNT_JSON",
       "GCLOUD_STORAGE_UPLOADS_BUCKET",
       "GCLOUD_STORAGE_UPLOADS_PRESIGNED_TOKEN_EXPIRATION_MIN",
     ],
     properties: {
-      PORT: {
+      HTTP_PORT: {
         type: "number",
         default: 3001,
       },
@@ -30,7 +30,7 @@ export default async function configPlugin(server, options, done) {
 
   const configOptions = {
     // decorate the Fastify server instance with `config` key
-    // such as `fastify.config('PORT')
+    // such as `fastify.config('HTTP_PORT')
     confKey: "config",
     // schema to validate
     schema: schema,
