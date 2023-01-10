@@ -5,6 +5,7 @@ export default async function configPlugin(server, options, done) {
     type: "object",
     required: [
       "HTTP_PORT",
+      "HTTP_HOST",
       "GCLOUD_SERVICE_ACCOUNT_JSON",
       "GCLOUD_STORAGE_UPLOADS_BUCKET",
       "GCLOUD_STORAGE_UPLOADS_PRESIGNED_TOKEN_EXPIRATION_MIN",
@@ -13,6 +14,10 @@ export default async function configPlugin(server, options, done) {
       HTTP_PORT: {
         type: "number",
         default: 3001,
+      },
+      HTTP_HOST: {
+        type: "string",
+        default: "0.0.0.0",
       },
       GCLOUD_SERVICE_ACCOUNT_JSON: {
         type: "string",
