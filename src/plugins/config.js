@@ -3,7 +3,12 @@ import fastifyEnv from "@fastify/env";
 export default async function configPlugin(server, options, done) {
   const schema = {
     type: "object",
-    required: ["PORT"],
+    required: [
+      "PORT",
+      "GCLOUD_SERVICE_ACCOUNT_JSON",
+      "GCLOUD_STORAGE_UPLOADS_BUCKET",
+      "GCLOUD_STORAGE_UPLOADS_PRESIGNED_TOKEN_EXPIRATION_MIN",
+    ],
     properties: {
       PORT: {
         type: "number",
