@@ -9,7 +9,6 @@ export default async function storagePlugin(server, options, done) {
     serviceAccountKeyBuffer.toString("utf-8")
   );
 
-  console.log(serviceAccountKeyJSON);
   const storage = new Storage({ credentials: serviceAccountKeyJSON });
   server.decorate("storage", storage);
 }
